@@ -46,51 +46,61 @@
 
 
 
-// k = 20;
-// f1(8, 3);
+k = 20;
+f1(8, 3);
 
-// function f1(a, b) {
-//     var x = 10,
-//         y = 230,
-//         p = 'HELLO'
+function f1(a, b) {
+    var x = 10,
+        y = 230,
+        p = 'HELLO'
 
-//     f2(x + 3);
+    f2(x + 3);
 
 
-//     function f2(x) {
-//         var z = 10;
+    function f2(x) {
+        var z = 10;
 
-//         console.log('x=', x); // f2.LE
-//         console.log('z=', z); // f2.LE
-//         console.log('y=', y); // f1.LE, closure
-//         console.log('k=', k); // global, window.k
-//         console.log('p=', p);
-//         debugger;
-//     }
+        f3();
+        console.log('x=', x); // f2.LE
+        console.log('z=', z); // f2.LE
+        console.log('y=', y); // f1.LE, closure
+        console.log('k=', k); // global, window.k
+        console.log('p=', p);
+
+
+        function f3() {
+            console.log(p);
+
+            debugger;
+        }
+
+        
+    }
+}
+
+// x = 20;
+
+// function f2(y) {
+//     var x = 10;
+
+//     return f1(y);
 // }
 
-x = 20;
+// function f0(x){
 
-function f2(y) {
-    var x = 10;
+//     x = 400;
+//     window.x = 300;
 
-    return f1(y);
-}
-
-function f0(x){
-
-    x = 400;
-    window.x = 300;
-
-    return f1(x*2);
+//     return f1(x*2);
 
 
-    function f1(y) {
-        return x + y;
-    }
+//     function f1(y) {
+//         return x + y;
+//     }
     
-}
+//     debugger;
+// }
 
-var res = f0(5);
+// var res = f0(5);
 
-console.log(res);
+// console.log(res);
