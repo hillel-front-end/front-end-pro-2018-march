@@ -40,7 +40,7 @@ console.log('Lection_7');
 function factory(arr) {
     var i = 0;
 
-    return function(callback){
+    return function(callback, arr){
         if (arr[i] && callback) {
             return callback(arr[i++]);
         } else if (arr[i] && !callback) {
