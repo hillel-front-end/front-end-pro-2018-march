@@ -11,7 +11,7 @@
 
 3) выполнить команду 
  
-    `git clone https://github.com/hillel-front-end/front-end-pro-2018.git`
+    `git clone https://github.com/hillel-front-end/front-end-pro-2018-march.git`
 
 4) перейти в папку проекта
 
