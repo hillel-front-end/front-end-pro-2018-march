@@ -1,6 +1,40 @@
 console.log('Lection_14');
 
 window.onload = function() {
+    var container = document.querySelector('.container'),
+        step = 4,
+        direction = 1,
+        buffer = 5;
+
+    var timer = setTimer();
+    
+    function startAnimation(){
+        if ((container.offsetLeft >= window.innerWidth - container.offsetWidth - buffer) ||
+        (container.offsetLeft <= 0 + buffer && direction == -1)) {
+            direction = -direction;
+        }
+
+        container.style.left = container.offsetLeft + (step*direction) + 'px';
+    }
+
+    function setTimer(){
+        return setInterval(startAnimation, 20);
+    }
+
+
+    document
+        .querySelector('#stop')
+        .addEventListener('click', function(){
+            clearInterval(timer);
+        });
+    
+    document
+        .querySelector('#start')
+        .addEventListener('click', function(){
+            timer = setTimer();
+        });
+
+
 
     var block = document.querySelector('.block'),
         input = document.querySelector('.input');
@@ -61,9 +95,9 @@ window.onload = function() {
     //     console.log('blur', event);
     // });
 
-    // input.addEventListener('click', function(event){
-    //     console.log('click');
-    // });
+    input.addEventListener('click', function(event){
+        console.log('click');
+    });
 }
 
 
