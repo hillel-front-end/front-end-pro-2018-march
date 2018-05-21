@@ -144,20 +144,42 @@ var arr = [8, 2, false, '123', true,  {}];
 // console.log(resArr);
 
 
-var data = [
-    { title: '', val: 7},
-    { title: '', val: -17},
-    { title: '', val: 23},
-    { title: '', val: 108},
-    { title: '', val: 'yoo'}
-];
+// var data = [
+//     { title: '', val: 7},
+//     { title: '', val: -17},
+//     { title: '', val: 23},
+//     { title: '', val: 108},
+//     { title: '', val: 'yoo'}
+// ];
 
-var result = data
-                .map(function(item){
-                    return item.val;
-                })
-                .filter(function(item){
-                    return item > 0 && typeof item == 'number'
-                });
+// var result = data
+//                 .map(function(item){
+//                     return item.val;
+//                 })
+//                 .filter(function(item){
+//                     return item > 0 && typeof item == 'number'
+//                 });
     
-console.log(result);
+// console.log(result);
+
+
+// ------------------------
+
+var obj = {
+    id: '',
+    name: 'fooo',
+    value: 10
+}
+
+
+var myMehods = {
+    setValueByProp: function(prop, value){
+        this[prop] = value;
+    },
+    getValuesByType: function(type){
+        // this magic
+    }
+} 
+
+myMehods.setValueByProp.call(obj, 'id', 'BLABLA');
+myMehods.setValueByProp.call(obj, 'value', [1,78,3,4,9]);
