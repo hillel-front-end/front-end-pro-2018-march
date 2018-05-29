@@ -1,0 +1,10 @@
+{
+    "list": [
+        1, 2, 3
+    ],
+    "ukraine": {
+        "cities": [],
+        "tel_number": "+380",
+        "size": 603
+    }
+}
