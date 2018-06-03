@@ -1,0 +1,13 @@
+{
+    "menu": [
+        {
+            "title": "Home"
+        },
+        {
+            "title": "Settings"
+        },
+        {
+            "title": "Goods"
+        }
+    ]
+}

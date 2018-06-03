@@ -28,31 +28,31 @@ console.log('Lection_19');
 
 
 
-// var promise = new Promise(function(resolve, reject){
-//     var x = Math.random()*20-10;
-//     setTimeout(function(){
-//         console.log(1);
-//         if (x < 0) {
-//             reject({
-//                 success: false,
-//                 value: x
-//             });
-//         }
+var promise = new Promise(function(resolve, reject){
+    var x = Math.random()*20-10;
+    setTimeout(function(){
+        console.log(1);
+        if (x < 0) {
+            reject({
+                success: false,
+                value: x
+            });
+        }
         
-//         resolve(x);
-//     }, 500);
+        resolve(x);
+    }, 500);
 
-// });
+});
 
 
-// promise
-//     .then(onResolve, onReject)
-//     .then(function(data){
-//         console.log(3, 'resolve', data);
-//     },
-//     function(data){
-//         console.log(3, 'reject', data);
-//     })
+promise
+    .then(onResolve, onReject)
+    .then(function(data){
+        console.log(3, 'resolve', data);
+    },
+    function(data){
+        console.log(3, 'reject', data);
+    })
 
 
 // function onResolve(data){
