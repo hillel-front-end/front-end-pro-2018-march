@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Singleton и оператор new</title>
+</head>
+<body>
+    <script>
+        function Sun(a, b) {
+            // проверяем наличие экземпляра созданного ранее.
+            if (typeof Sun.instance === "object") {
+                return Sun.instance;
+            }
+
+            // создаем новый экземпляр
+            this.color = a;
+            this.isBig = b;
+
+            // cохраняем созданный экземпляр для повторного использования.
+            Sun.instance = this;
+            // console.log(this);
+
+            // неявный возврат экземпляра
+            // return this;
+        }
+
+        var sun1 = new Sun('yellow', 20);
+        console.dir(Sun)
+        var sun2 = new Sun();
+        console.log(sun1 === sun2); // true
+
+    </script>
+</body>
+</html>
