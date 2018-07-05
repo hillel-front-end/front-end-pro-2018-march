@@ -1,0 +1,11 @@
+{
+  "name": "Node-lesson",
+  "description": "",
+  "version": "0.1.1",
+  "dependencies": {
+    "async": "1.x"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}

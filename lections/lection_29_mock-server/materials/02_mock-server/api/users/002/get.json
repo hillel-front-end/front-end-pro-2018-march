@@ -1,0 +1,31 @@
+[
+    {
+        "id": "002",
+        "email": "test@frontend-science.com",
+        "name": "fs",
+        "image": "https://s-media-cache-ak0.pinimg.com/avatars/horujaya_1428587412_280.jpg",
+        "password": "cb0c9e0026a21e8a0d5a163f4ae4a2e4978e22f8bc705840ebdad1a99762bf79",
+        "following": {
+            "tags": [
+                {
+                    "name": "sport",
+                    "active": true
+                },
+                {
+                    "name": "climbing",
+                    "active": true
+                }
+            ],
+            "users": [
+                {
+                    "id": "aaa",
+                    "active": true
+                },
+                {
+                    "id": "aac",
+                    "active": true
+                }
+            ]
+        }
+    }
+]
