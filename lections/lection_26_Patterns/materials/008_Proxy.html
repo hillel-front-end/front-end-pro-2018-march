@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Прокси-объект (Proxy)</title>
+</head>
+<body>
+    <script>
+        // Прокси - объект контролирующий работу с другим объектом.
+
+        var http = {
+            makeRequest: function (id, callback) {
+                // Запрос на сервер
+                setTimeout(function () {
+                    callback("Данные от сервера " + new Date().getTime());
+                }, 3000);
+            }
+        }
+
+        // Прокси объект
+        var proxy = (function () {
+
+            // кэш
+            var cache = {};
+
+            return {
+                makeRequest: function (id, callback) {
+                    if (cache[id]) {
+                        callback(cache[id]);
+                    }
+                    else {
+                        http.makeRequest(id, function (data) {
+                            cache[id] = data;
+                            callback(data);
+                        });
+                    }
+                }
+            }
+        })();
+    </script>
+
+    <input id="forRequest" type="text" /><span id="loader" style="display:none;">Загрузка...</span>
+    <br />
+    <input id="requestBtn1" type="button" value="Запрос" />
+    <input id="requestBtn2" type="button" value="Запрос (с использование прокси-объекта)" />
+    <br />
+    <p id="output"></p>
+
+    <script>
+        function get(id) {
+            return document.getElementById(id);
+        }
+
+        function callback(data) {
+            loader.style.display = "none";
+            output.innerHTML += data + "<br />";
+        }
+
+        get("requestBtn1").addEventListener("click", function () {
+            get("loader").style.display = "inline";
+            var id = get("forRequest").value;
+            // использование напрямую объекта http
+            http.makeRequest(id, callback);
+        });
+
+        get("requestBtn2").addEventListener("click", function () {
+            get("loader").style.display = "inline";
+            var id = get("forRequest").value;
+            // использование proxy который обращается к объекту http
+            proxy.makeRequest(id, callback);
+        });
+
+    </script>
+</body>
+</html>
+
+

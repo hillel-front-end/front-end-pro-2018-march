@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Посредник (Mediator)</title>
+</head>
+<body>
+    <script>
+        // Посредник или Медиатор - паттерн проектирования обеспечивающий взаимодействие множества
+        // объектов, формируя при этом слабую связность избавляя объекты от необходимости явно ссылаться
+        // друг на друга.
+
+        // В данном файле показано использование медиатора на примере игры с двумя игроками и доской результатов.
+        // Игроки на клавиатуре нажимают клавиши 1 или 0 а медиатор определяя нажатия обновляет доску результатов
+
+        var mediator = {
+            // объекты которые объединяет медиатор
+            players: {},
+
+            // метод для инициализации всех объектов
+            setup: function () {
+                this.players.player1 = new Player("Player 1");
+                this.players.player2 = new Player("Player 2");
+            },
+
+            // обновление интерфейса, если кто-то из игроков сделал ход.
+            updateMediator: function () {
+                var score = {
+                    Player1: this.players.player1.points,
+                    Player2: this.players.player2.points,
+                };
+                scoreboard.update(score);
+            },
+
+            // обработчик действия пользователя
+            keypress: function (e) {
+                e = e || window.event;
+
+                if (e.keyCode === 49) { // 1
+                    mediator.players.player2.updatePlayer();
+                    return;
+                }
+                if (e.keyCode === 48) { // 0
+                    mediator.players.player1.updatePlayer();
+                    return;
+                }
+
+            }
+        }
+
+        var scoreboard = {
+            // HTML элемент, который должен обновляться.
+            element: null,
+
+            // обновляет счет на экране
+            update: function (score) {
+                var i, msg = "";
+                for (i in score) {
+                    if (score.hasOwnProperty(i)) {
+                        msg += "<p>" + i + " = " + score[i] + "</p>";
+                    }
+                }
+                this.element.innerHTML = msg;
+            }
+        }
+
+        // Игрок
+        function Player(name) {
+            this.name = name;
+            this.points = 0;
+        }
+
+        // Метод для обновление счета игрока
+        Player.prototype.updatePlayer = function () {
+            this.points++;
+            mediator.updateMediator();
+        }
+    </script>
+
+    <div id="scoreboard"></div>
+
+    <script>
+        mediator.setup();
+        scoreboard.element = document.getElementById("scoreboard")
+        window.onkeypress = mediator.keypress;
+    </script>
+</body>
+</html>
+
